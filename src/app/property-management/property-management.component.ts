@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PropertyService } from '../property.service';
 
 @Component({
   selector: 'app-property-management',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyManagementComponent implements OnInit {
 
-  constructor() { }
+  propertyData:any = [];
+
+  constructor(
+    private propertyService: PropertyService
+  ) {
+   }
 
   ngOnInit(): void {
+    this.propertyService.getProperties().subscribe(res => {
+      this.propertyData = res;
+      console.log("====propertyData====",this.propertyData);
+    })
   }
 
 }
