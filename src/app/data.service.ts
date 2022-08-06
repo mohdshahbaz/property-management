@@ -11,7 +11,7 @@ export class DataService implements InMemoryDbService{
   createDb(){
 
    let  property =  [
-    {  id:  1,  name:  'PO1', size: 1000, description: 'Insurance policy number PO1' },
+    {  id:  1,  name:  '', size: "", description: '' },
    ];
 
    return {property};

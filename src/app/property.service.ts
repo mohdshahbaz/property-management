@@ -10,11 +10,11 @@ export class PropertyService {
   constructor(private httpClient: HttpClient) { }
 
   public getProperties(){ 
-       return this.httpClient.get(this.SERVER_URL + 'properties');
+       return this.httpClient.get(this.SERVER_URL + 'property');
   }
 
   public createProperty(data: any){
-      return this.httpClient.post(`${this.SERVER_URL + 'properties'}`, data)
+      return this.httpClient.post(`${this.SERVER_URL + 'property'}`, data)
   }
 
  
