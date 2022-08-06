@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PropertyService } from '../property.service';
 
 @Component({
   selector: 'app-add-property',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPropertyComponent implements OnInit {
 
-  constructor() { }
+  public propertyForm!: FormGroup;
+  propertyData:any = [];
+
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private propertyService: PropertyService) {
+  }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.propertyForm = this.fb.group({
+      name: ['', Validators.required],
+      size: ['', Validators.required],
+      description: ['', Validators.required]
+    })
+  }
+
+  onSubmit() {
+    console.log("value", this.propertyForm.value);
+
+
+    this.propertyService.createProperty(this.propertyForm.value).subscribe(res => {
+      this.router.navigate(["/"]);
+
+    })
+
   }
 
 }

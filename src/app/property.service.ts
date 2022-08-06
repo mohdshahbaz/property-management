@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PropertyService {
+  
   SERVER_URL: string = "http://localhost:8080/api/";
   constructor(private httpClient: HttpClient) { }
 
@@ -12,7 +13,7 @@ export class PropertyService {
        return this.httpClient.get(this.SERVER_URL + 'properties');
   }
 
-  public createPolicy(data: any){
+  public createProperty(data: any){
       return this.httpClient.post(`${this.SERVER_URL + 'properties'}`, data)
   }
 
